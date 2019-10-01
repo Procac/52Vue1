@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+        *{
+            margin:0px; padding:0px;
+        }
+        body{
+            font-size:14px;
+        }
+        #demo{
+            width:1000px;
+            margin:15px auto;
+        }
+        #bigImg{
+            float:left;
+            margin-right:15px;
+            height: 450px;
+            width: 350px;
+            border: 1px solid cadetblue;
+        }
+        .item{
+            width:340px;
+            line-height:30px;
+            box-sizing: border-box;
+            background: #f7f7f7;
+            border:2px solid #f7f7f7;
+            margin:15px 0px;
+            float:left;
+        }
+        .item img{
+            vertical-align:middle;
+            margin-right:10px;
+        }
+        .border{
+            border:1px solid olivedrab;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <img :src="imgBigUrl" id="bigImg"/>
+    <p>颜色选型</p>
+    <div v-for="(item,index) in listFans" :class=['item',{'border':current==index}] @click="handleClick(index)"><img :src="item.imgUrl"/>{{item.desc}}</div>
+</div>
+<script>
+    new Vue({
+        el:'#demo',
+        data:{
+            current:0,
+            imgBigUrl:'img/1-big.jpg',
+            listFans:[{desc:'灰色【ATCG基础长袖男女百搭宽松情侣卫衣】',
+                imgUrl:'img/02 - 副本.jpg',
+                imgBigUrl:'img/02.jpg'},
+                {desc:'粉色【ATCG基础长袖男女百搭宽松情侣卫衣】',
+                    imgUrl:'img/03 - 副本.jpg',
+                    imgBigUrl:'img/03.jpg'},
+                {desc:'黑色【ATCG基础长袖男女百搭宽松情侣卫衣】',
+                    imgUrl:'img/04 - 副本.jpg',
+                    imgBigUrl:'img/04.jpg'},
+                {desc:'情侣【ATCG基础长袖男女百搭宽松情侣卫衣】',
+                    imgUrl:'img/05 - 副本.jpg',
+                    imgBigUrl:'img/05.jpg'}]
+        },
+        methods:{
+            handleClick:function(index){
+                this.current = index;
+                this.imgBigUrl = this.listFans[index].imgBigUrl;
+            }
+        }
+    })
+</script>
+</body>
+</html>
